@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { errorHandler } = require('./middleware/errorHandler');
-
+const authRoutes = require('./routes/authRoutes');
 
 
 const config = require('./config');
@@ -27,6 +27,9 @@ const connectDB = async () => {
 };
 
 connectDB();
+
+
+// app.use('/api/auth', authRoutes);
 
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok' });
