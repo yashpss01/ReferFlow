@@ -34,7 +34,7 @@ const ReferralList = ({ token, logout }) => {
                         Authorization: `Bearer ${token}`,
                     },
                 };
-                await axios.delete(`http://localhost:5001/api/referrals/${id}`, config);
+                await axios.delete(`/api/referrals/${id}`, config);
                 fetchReferrals();
             } catch (error) {
                 console.error('Error deleting referral:', error);
@@ -70,7 +70,7 @@ const ReferralList = ({ token, logout }) => {
 
                             <div className="card-actions">
                                 <a
-                                    href={`http://localhost:5001/${referral.resumePath}`}
+                                    href={`/${referral.resumePath}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn btn-secondary"
