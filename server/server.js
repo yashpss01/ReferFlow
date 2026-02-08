@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const { errorHandler } = require('./middleware/errorHandler');
 const authRoutes = require('./routes/authRoutes');
+const referralRoutes = require('./routes/referralRoutes');
 
 
 const config = require('./config');
@@ -29,7 +30,11 @@ const connectDB = async () => {
 connectDB();
 
 
-// app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/referrals', referralRoutes);
+
+// Make uploads folder static so frontend can download files later 
+app.use('/uploads', express.static('uploads'));
 
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok' });
