@@ -36,6 +36,10 @@ app.use('/api/referrals', referralRoutes);
 // Make uploads folder static so frontend can download files later 
 app.use('/uploads', express.static('uploads'));
 
+app.get('/', (req, res) => {
+    res.send('API is running...');
+});
+
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok' });
 });
