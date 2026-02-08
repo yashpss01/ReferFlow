@@ -92,4 +92,23 @@ router.put('/:id', protect, async (req, res) => {
     }
 });
 
+
+// Delete a referral
+router.delete('/:id', protect, async (req, res) => {
+    try {
+        const referral = await Referral.findById(req.params.id);
+
+        if (referral) {
+            await referral.deleteOne();
+            res.json({ message: 'Referral removed' });
+        } else {
+            res.status(404);
+            throw new Error('Referral not found');
+        }
+    } catch (error) {
+        res.status(400);
+        throw new Error(error.message);
+    }
+});
+
 module.exports = router;
