@@ -70,7 +70,7 @@ const ReferralList = ({ token, logout }) => {
 
                             <div className="card-actions">
                                 <a
-                                    href={`/${referral.resumePath}`}
+                                    href={`${import.meta.env.VITE_API_URL || ''}/${referral.resumePath}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn btn-secondary"
